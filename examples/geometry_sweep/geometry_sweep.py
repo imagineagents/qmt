@@ -31,7 +31,6 @@ wrap2 = Part3DData('Second Layer', 'Sketch007', 'lithography', 'dielectric',
 virt = Part3DData('Virtual Domain', 'Sketch008', 'extrude', 'virtual', thickness=5.5)
 
 # Parameters for geometry building
-py2env = 'python2'
 input_file = 'geometry_sweep_showcase.fcstd'  # contains a model parameter 'd1'
 build_order = [block1, block2, sag, virt, wire, shell, block3, substrate, wrap, wrap2]
 
@@ -39,7 +38,7 @@ build_order = [block1, block2, sag, virt, wire, shell, block3, substrate, wrap, 
 futures = []
 for d1 in np.linspace(2., 7., 3):
     futures.append(dask.delayed(build_3d_geometry)(
-        py2env, input_file, build_order, {'d1': d1}
+        'python', input_file, build_order, {'d1': d1}
     ))
 geometries = dask.compute(*futures)
 

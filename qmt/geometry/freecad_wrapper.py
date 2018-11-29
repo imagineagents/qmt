@@ -11,7 +11,7 @@ import subprocess
 import qmt
 
 
-def fcwrapper(pyenv='python2', instruction=None, data=None, reprint_output=False):
+def fcwrapper(pyenv='python', instruction=None, data=None, reprint_output=False):
     """Wrapper to isolate FreeCAD Python 2.7 calls from the Python 3 code base.
 
     :param str pyenv:            Python interpreter, defaults to 'python2'.
